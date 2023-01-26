@@ -1,6 +1,5 @@
 .DS_Store
 .gitignore
 node_modules
-public
 auto-update-counters.code-workspace
 package-lock.json
