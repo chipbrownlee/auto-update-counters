@@ -1,7 +1,7 @@
 import { select, csv } from "d3";
 // import moment from "moment/min/moment.min";
 // import numeral from "numeral/min/numeral.min";
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 Promise.all([
   csv("https://raw.githubusercontent.com/chipbrownlee/aprdata/main/Charts/cases.csv"),
@@ -14,8 +14,13 @@ Promise.all([
   let lastRowHospitalized = values[2].slice(-1)[0];
   let lastRowPositivity = values[3].slice(-1)[0];
 
-  let date = format(new Date(lastRowCases.Date), 'MMMM dd, yyyy');
-  let hospitalDate = format(new Date(lastRowHospitalized.Date), 'MMMM dd, yyyy');
+  console.log(lastRowCases.Date)
+
+  let date = format(parse(lastRowCases.Date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy');
+  let hospitalDate = format(parse(lastRowHospitalized.Date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy');
+
+  console.log(date)
+  console.log(hospitalDate)
 
   let cumulativeCases = (d) => {
     let cumulativeCases = Number(lastRowCases["Cumulative cases"]);
