@@ -14,13 +14,8 @@ Promise.all([
   let lastRowHospitalized = values[2].slice(-1)[0];
   let lastRowPositivity = values[3].slice(-1)[0];
 
-  console.log(lastRowCases.Date)
-
   let date = format(parse(lastRowCases.Date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy');
   let hospitalDate = format(parse(lastRowHospitalized.Date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy');
-
-  console.log(date)
-  console.log(hospitalDate)
 
   let cumulativeCases = (d) => {
     let cumulativeCases = Number(lastRowCases["Cumulative cases"]);
